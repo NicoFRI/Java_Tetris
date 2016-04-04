@@ -10,10 +10,15 @@ public class Fenetre_principale extends JFrame implements ActionListener  {
 	 * 
 	 */
 	protected JTextField Score, Level, Nb_Ligne, FormeSuivante;
+	GestionTetris gt;
 	
 	private static final long serialVersionUID = -8498480202498074223L;
 
-	public Fenetre_principale() {
+	public Fenetre_principale(GestionTetris gt) {
+		
+		this.gt=gt;
+		
+		
 		this.setTitle("Tetris");
 		this.setSize(600,600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,21 +104,35 @@ public class Fenetre_principale extends JFrame implements ActionListener  {
 	    gbc.fill = GridBagConstraints.VERTICAL;
 	    Tetris.add(cell5, gbc);
 	    
-	    
 	  //On ajoute le conteneur
 	    this.setContentPane(Tetris);
-	    this.setVisible(true);
-		
+	    this.setVisible(true);    
+	   
 	}
+	
+	
+	public void affichage_jeu(Graphics g) {
+		Bloc[][] grille = this.gt.getgrille();
+		
+		for(int i=0;i<=21;i++) {
+			for (int j=0; j<=11;j++) {
+					
+					g.drawRect(grille[i][j]); 
+					
+					 int j = 30*j ; grille.drawRect(s, x, y);
+				
+			}
+		}
+	}
+	
+	
+	
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		
 	}
-
-	
-	
 }
 
 
