@@ -1,33 +1,37 @@
 import java.awt.*;
 
-public class Bloc  {
-	private int x , y;
-	private int couleur;
 
-	public Bloc(int x, int y, int coul){
-		setY(y);
-		setX(x);
+import javax.swing.JPanel;
+
+public class Bloc extends JPanel          {
+	private int x , y;
+	private Color couleur;
+
+	public Bloc(int ex, int ey, Color coul){
+		setY(ey);
+		setX(ex);
 		setCouleur(coul);
 	}
 	
 	
-	public Rectangle getBloc() {
-		 Rectangle Rect = new Rectangle(this.x*30, this.y*30, 30 ,30);
-		return Rect;
-	}
+	//public Rectangle getBloc() {
+	//	 Rectangle Rect = new Rectangle(this.x*30, this.y*30, 30 ,30);
+	//	return Rect;
+	//}
 	
 	
-	public int getCouleur() {
+	public Color getCouleur() {
 		return couleur;
 	}
 
-	public void setCouleur(int couleur) {
+	public void setCouleur(Color couleur) {
 		this.couleur = couleur;
 	}
 	
+
 	
 	public int getY() {
-		return y;
+		return this.y;
 	}
 	public void setY(int y) {
 		this.y = y;
@@ -35,7 +39,7 @@ public class Bloc  {
 	
 	
 	public int getX() {
-		return x;
+		return this.x;
 	}
 	
 	public void setX(int x) {

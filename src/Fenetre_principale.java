@@ -11,6 +11,7 @@ public class Fenetre_principale extends JFrame implements ActionListener  {
 	 */
 	protected JTextField Score, Level, Nb_Ligne, FormeSuivante;
 	GestionTetris gt;
+	private JPanelperso cell1;
 	
 	private static final long serialVersionUID = -8498480202498074223L;
 
@@ -26,9 +27,9 @@ public class Fenetre_principale extends JFrame implements ActionListener  {
 		
 
 		  //On crée nos différents conteneurs de couleur différente
-	    JPanel cell1 = new JPanel();
-	    cell1.setBackground(Color.YELLOW);
-	    cell1.setPreferredSize(new Dimension(300, 100));
+	    this.cell1 = new JPanelperso(gt);
+	    this.cell1.setBackground(Color.YELLOW);
+	    this.cell1.setPreferredSize(new Dimension(300, 100));
 	    
 	    JPanel cell2 = new JPanel();
 	    cell2.setBackground(Color.RED);
@@ -66,7 +67,7 @@ public class Fenetre_principale extends JFrame implements ActionListener  {
 	    Tetris.setLayout(new GridBagLayout());
 	    
 	    
- GridBagConstraints gbc = new GridBagConstraints();
+	    GridBagConstraints gbc = new GridBagConstraints();
 	    
 	    //On positionne la case de départ du composant
 	    gbc.gridx = 0;
@@ -77,7 +78,7 @@ public class Fenetre_principale extends JFrame implements ActionListener  {
 	    gbc.gridheight = 6;
 	    //Celle-ci indique que la cellule se réplique de façon verticale
 	    gbc.fill = GridBagConstraints.VERTICAL;
-	    Tetris.add(cell1, gbc);
+	    Tetris.add(this.cell1, gbc);
 	    
 	    
 	    gbc.gridx = 1;
@@ -106,20 +107,26 @@ public class Fenetre_principale extends JFrame implements ActionListener  {
 	    
 	  //On ajoute le conteneur
 	    this.setContentPane(Tetris);
+	    this.cell1.repaint();
 	    this.setVisible(true);    
-	   
+	    
 	}
 	
+
 	
-	public void affichage_jeu(Graphics g) {
+	
+	public void affichage_jeu() {
 		Bloc[][] grille = this.gt.getgrille();
 		
-		for(int i=0;i<=21;i++) {
-			for (int j=0; j<=11;j++) {
+		for(int i=0;i<=10;i++) {
+			for (int j=0; j<=20;j++) {
 					
-					g.drawRect(grille[i][j]); 
-					
-					 int j = 30*j ; grille.drawRect(s, x, y);
+					//g.drawRect(grille[i][j]); 
+				
+				this.cell1.add(grille[i][j]);
+				grille[i][j].repaint();
+				
+					 //int j = 30*j ; grille.drawRect(s, x, y);
 				
 			}
 		}
@@ -136,7 +143,29 @@ public class Fenetre_principale extends JFrame implements ActionListener  {
 }
 
 
+class JPanelperso extends JPanel{
+	GestionTetris gt;
+	
+	public JPanelperso(GestionTetris gt){
+		this.gt = gt;
+	}
+	
+	  public void paint(Graphics g)
+      {
+			
+		  	Bloc[][] grille = this.gt.getgrille();
+			
+			for(int i=1;i<=10;i++) {
+				for (int j=0; j<=19;j++) {
+						
+					g.setColor(grille[i][j].getCouleur());
+					 g.fillRect(grille[i][j].getX()*30, grille[i][j].getY()*30, 30 ,30);
 
+				}
+			}
+      }
+	
+}
 
 
 

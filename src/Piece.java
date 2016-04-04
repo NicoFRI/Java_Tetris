@@ -1,14 +1,17 @@
 
 public class Piece {
-	private int type;
-	private int[][] piece = new int[4][4];
-	private int posX;
-	private int posY;
+	private int type; // N° entre 1 et 7
+	private int[][] piece = new int[4][4];  // matrice de la piece
+	private int posX; // position en X
+	private int posY; // position en Y
 	
+	//constructeur
 	public Piece(){
 		initialise();
-}
+	}
 
+	// intialise : génere un numero aléatoire en 1 et 7
+	// affecte la matrice correndpodant au n° généré
 	private void initialise(){
 		
 		this.type = (int) (Math.random()*6)+1;
@@ -104,10 +107,12 @@ public class Piece {
 	}
 
 	
+	//défini le type de piece
 	private void setPiece(int[][] piece) {
 		this.piece = piece;
 	}
 	
+	//tourne la piece de 90° sur la gauche
 	public void rotateLeft(){
 		int[][] mat = new int[4][4];
 		for (int i = 0; i<4 ;i++)
@@ -118,6 +123,7 @@ public class Piece {
 		this.setPiece(mat);
 	}
 
+	//tourne la piece de 90° sur la droite
 	public void rotateRight(){
 		int[][] mat = new int[4][4];
 		for (int i = 0; i<4 ;i++)
@@ -144,11 +150,13 @@ public class Piece {
 		this.posY = posY;
 	}
 
+	//renvoi la matrice de la piece
 	public int[][] getPiece() {
 		return piece;
 	}
 
-
+	
+	// affiche la patrice de la piece dans la console.
 	public void LogPieceDansConsole(){
 		System.out.println("type :" + this.type);
 		for (int i = 0; i<4 ;i++)
