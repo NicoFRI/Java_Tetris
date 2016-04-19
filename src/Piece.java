@@ -7,7 +7,7 @@ public class Piece {
 	
 	//constructeur
 	public Piece(){
-		initialise();
+		this.initialise();
 	}
 
 	// intialise : génere un numero aléatoire en 1 et 7
@@ -15,7 +15,9 @@ public class Piece {
 	private void initialise(){
 		
 		this.type = (int) (Math.random()*6)+1;
-		 
+		this.posX = 0;
+		this.posY = 0;
+				
 		 switch (this.type)
 		 {
 		  	case 1:
@@ -150,6 +152,14 @@ public class Piece {
 		this.posY = posY;
 	}
 
+	public void modPosY(int ModY) {
+		this.posY = this.posY + ModY ;
+	}
+	
+	public void modPosX(int ModX) {
+		this.posX = this.posX + ModX ;
+	}
+	
 	//renvoi la matrice de la piece
 	public int[][] getPiece() {
 		return piece;

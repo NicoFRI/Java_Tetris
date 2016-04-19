@@ -1,9 +1,6 @@
 import java.awt.*;
 
-
-import javax.swing.JPanel;
-
-public class Bloc extends JPanel          {
+public class Bloc {
 	private int x , y;
 	private Color couleur;
 
@@ -12,12 +9,6 @@ public class Bloc extends JPanel          {
 		setX(ex);
 		setCouleur(coul);
 	}
-	
-	
-	//public Rectangle getBloc() {
-	//	 Rectangle Rect = new Rectangle(this.x*30, this.y*30, 30 ,30);
-	//	return Rect;
-	//}
 	
 	
 	public Color getCouleur() {
