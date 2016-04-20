@@ -104,15 +104,17 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 	
 
 	public void affichage_jeu() {
-
+		this.gt.calculator();
+		this.TetrisZone.repaint();
+		this.ScorePanel.UpdtatePan( this.gt.getScore());
+		this.LevelPanel.UpdtatePan( this.gt.getLevel());
+		this.NbLignePanel.UpdtatePan( this.gt.getNbLigne());
+		this.PcsSuivante.UpdatePan(this.gt.PieceSuivante);
+		
 	}
 
 
-	/*@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}*/
+
 	
 	@Override
 	public void keyPressed(KeyEvent OhKAY) {
@@ -120,11 +122,7 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 		if(OhKAY.getKeyCode()==39) { gt.decalePieceDroit();}//Droit
 		if(OhKAY.getKeyCode()==40) { gt.descendrePiece(); }//Bas
 		if(OhKAY.getKeyCode()==38) { gt.tournerPiece(); }//Haut
-		this.TetrisZone.repaint();
-		this.ScorePanel.UpdtatePan( t++);
-		this.LevelPanel.UpdtatePan( t++);
-		this.NbLignePanel.UpdtatePan( t++);
-		this.PcsSuivante.UpdatePan(this.gt.PieceSuivante);
+
 	}
 
 

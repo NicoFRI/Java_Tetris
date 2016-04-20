@@ -2,21 +2,44 @@ import java.awt.Color;
 
 
 public class GestionTetris   {
-	grille gr;
-	Bloc[][] GrilleDynamique;
-	Piece ActivePiece;
-	Piece PieceSuivante;
+	grille gr; //grille contenant les bloc statiques
+	Bloc[][] GrilleDynamique; // grille avec les bloc statique et en mouvement
+	Piece ActivePiece; // piece dans la zgrille dynamique
+	Piece PieceSuivante; // pieces affiché dans le bloc piece suivante
 	Boolean stop;
+	int Score, Level, NbLigne;
+	double nextDescente;
+	
+	
+	
 	
 	public GestionTetris(){
 		this.gr = new grille();
 		this.ActivePiece = new Piece();
 		this.PieceSuivante = new Piece();
 		this.GrilleDynamique = this.gr.getgrille();
-	
+		this.Score =0;
+		this.Level=1;
+		this.NbLigne=0;
+		this.nextDescente=0;
 	}
 	
 
+	
+	public int getScore()
+	{
+		return this.Score;
+	}
+	
+	public int getLevel()
+	{
+		return this.Level;
+	}
+	
+	public int getNbLigne()
+	{
+		return this.NbLigne;
+	}
 	
 	public Bloc[][] getgrille()
 	{
@@ -174,12 +197,7 @@ public class GestionTetris   {
 	    }
 	    
 
-	    /*try{
-	    	  Thread.sleep(500);
-	    }catch(InterruptedException ex){
-	    	  
-	    }*/
-	    
+   
 	    if (ligneComplete){
 	    	cpt=0;
 		    
@@ -213,6 +231,18 @@ public class GestionTetris   {
 	public Piece getPcsSuiv() {
 		
 		return this.PieceSuivante;
+	}
+
+
+
+	public void calculator() {
+		
+		this.nextDescente = this.nextDescente + 0.05*this.Level;;
+		
+		if (this.nextDescente > 1){
+			this.nextDescente = 0;
+			this.descendrePiece();
+		}
 	}
 	
 	
