@@ -11,7 +11,11 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 	 */
 	protected JLabel Score, Level, Nb_Ligne, FormeSuivante ,  titre_score, titre_level, titre_nb_ligne, titre_forme_suiv;
 	GestionTetris gt;
-	private JPanelperso cell1;
+	private JPanelperso TetrisZone;
+	private AffichagePan ScorePanel, LevelPanel, NbLignePanel ;
+	private AffichagePcsSuivante PcsSuivante;
+	
+	int t;
 	
 	private static final long serialVersionUID = -8498480202498074223L;
 
@@ -30,88 +34,23 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 		  //On crée nos différents conteneurs de couleur différente
 		
 		//Grille
-	    this.cell1 = new JPanelperso(gt);
-	    this.cell1.setLayout(null);
-	    this.cell1.setBackground(new Color(255,255,255));
-	    this.cell1.setPreferredSize(new Dimension(300, 600));
+	    this.TetrisZone = new JPanelperso(gt);
+	    this.TetrisZone.setLayout(null);
+	    this.TetrisZone.setBackground(new Color(255,255,255));
+	    this.TetrisZone.setPreferredSize(new Dimension(300, 600));
 	    
 	     
-	    //panel Score
-	    JPanel cell2 = new JPanel();
-	    cell2.setLayout(null);
-	    cell2.setBackground(new Color(20,20,20));
-	    cell2.setPreferredSize(new Dimension(300, 100));
-	    
-	    titre_score = new JLabel("Votre score");
-	    titre_score.setForeground(new Color(255,255,255));
-	    titre_score.setFont(new Font("Courrier New",Font.BOLD,25));
-	    cell2.add( titre_score);
-	    titre_score.setBounds(80, 15, 300, 30);
-	    
-		Score = new JLabel("00000000");
-		Score.setForeground(new Color(255,255,255));
-		Score.setFont(new Font("Courrier New",Font.BOLD,20));
-		cell2.add(Score);
-		Score.setBounds(105, 45, 300, 30);
-		
-		
-		
-		//panel Level
-	    JPanel cell3 = new JPanel();
-	    cell3.setLayout(null);
-	    cell3.setBackground(new Color(20,20,20));
-	    cell3.setPreferredSize(new Dimension(300, 100));
-	    
-	    titre_level = new JLabel("Votre Level");
-	    titre_level.setForeground(new Color(255,255,255));
-	    titre_level.setFont(new Font("Courrier New",Font.BOLD,25));
-	    cell3.add( titre_level);
-	    titre_level.setBounds(80, 15, 300, 30);
-	    
-	    Level = new JLabel("00000000");
-	    Level.setForeground(new Color(255,255,255));
-	    Level.setFont(new Font("Courrier New",Font.BOLD,20));
-		cell3.add(Level);
-		Level.setBounds(105, 45, 300, 30);
-	    
-	    
-		
-		//panel nb ligne
-	    JPanel cell4 = new JPanel();
-	    cell4.setLayout(null);
-	    cell4.setBackground(new Color(20,20,20));
-	    cell4.setPreferredSize(new Dimension(300, 100));
-	    
-	    titre_nb_ligne = new JLabel("Nb ligne");
-	    titre_nb_ligne.setForeground(new Color(255,255,255));
-	    titre_nb_ligne.setFont(new Font("Courrier New",Font.BOLD,25));
-	    cell4.add( titre_nb_ligne);
-	    titre_nb_ligne.setBounds(100, 15, 300, 30);
-	    
-	    
-	    Nb_Ligne = new JLabel("00000000");
-	    Nb_Ligne.setForeground(new Color(255,255,255));
-	    Nb_Ligne.setFont(new Font("Courrier New",Font.BOLD,20));
-		cell4.add(Nb_Ligne);
-		Nb_Ligne.setBounds(105, 45, 300, 30);
-		
-	    
-		
-		//panel piece suivante.
-		JPanel cell5 = new JPanel();
-		cell5.setLayout(null);
-		cell5.setBackground(new Color(20,20,20));
-		cell5.setPreferredSize(new Dimension(300, 100));
-	  
-		 titre_forme_suiv = new JLabel("Forme suivante");
-		 titre_forme_suiv.setForeground(new Color(255,255,255));
-		 titre_forme_suiv.setFont(new Font("Courrier New",Font.BOLD,25));
-		 cell5.add( titre_forme_suiv);
-		 titre_forme_suiv.setBounds(60, 15, 300, 30);
-		
+	    //panel
+	    ScorePanel = new AffichagePan("SCORE");
+	    LevelPanel = new AffichagePan("LEVEL");
+	    NbLignePanel = new AffichagePan("Nombre de Lignes");
+		PcsSuivante = new AffichagePcsSuivante(gt.getPcsSuiv());
 	    
 	    JPanel Tetris = new JPanel();
-		Tetris.setPreferredSize(new Dimension(600,600));
+	    Dimension dim = new Dimension(600,600);
+		Tetris.setPreferredSize(dim);
+	    Tetris.setMinimumSize(dim);
+	    Tetris.setMaximumSize(dim);
 		Tetris.setBackground(Color.WHITE);
 		
 		//On définit le layout manager
@@ -119,7 +58,6 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 	    
 	    
 	    GridBagConstraints gbc = new GridBagConstraints();
-	    
 	    //On positionne la case de départ du composant
 	    gbc.gridx = 0;
 	    gbc.gridy = 0;
@@ -130,36 +68,36 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 	    
 	    //Celle-ci indique que la cellule se réplique de façon verticale
 	    gbc.fill = GridBagConstraints.VERTICAL;
-	    Tetris.add(this.cell1, gbc);
+	    Tetris.add(this.TetrisZone, gbc);
 	    
 	    
 	    gbc.gridx = 1;
 	    gbc.gridheight = 2;
 	    //Celle-ci indique que la cellule se réplique de façon verticale
 	    gbc.fill = GridBagConstraints.VERTICAL;
-	    Tetris.add(cell2, gbc);
+	    Tetris.add(ScorePanel, gbc);
 	    
 	    
 	    gbc.gridy = 2;
 	    gbc.gridheight = 1;
 	    //Celle-ci indique que la cellule se réplique de façon verticale
-	    Tetris.add(cell3, gbc);
+	    Tetris.add(LevelPanel, gbc);
 	    
 	    gbc.gridy = 3;
 	    gbc.gridheight = 1;
 	    //Celle-ci indique que la cellule se réplique de façon verticale
 	    gbc.fill = GridBagConstraints.VERTICAL;
-	    Tetris.add(cell4, gbc);
+	    Tetris.add(NbLignePanel, gbc);
 	    
 	    gbc.gridy = 4;
 	    gbc.gridheight = 2;
 	    //Celle-ci indique que la cellule se réplique de façon verticale
 	    gbc.fill = GridBagConstraints.VERTICAL;
-	    Tetris.add(cell5, gbc);
+	    Tetris.add(PcsSuivante, gbc);
 	    
 	  //On ajoute le conteneur
 	    this.setContentPane(Tetris);
-	    this.cell1.repaint();
+	    this.TetrisZone.repaint();
 	    this.setVisible(true);    
 	    
 	}
@@ -182,7 +120,11 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 		if(OhKAY.getKeyCode()==39) { gt.decalePieceDroit();}//Droit
 		if(OhKAY.getKeyCode()==40) { gt.descendrePiece(); }//Bas
 		if(OhKAY.getKeyCode()==38) { gt.tournerPiece(); }//Haut
-		this.cell1.repaint();
+		this.TetrisZone.repaint();
+		this.ScorePanel.UpdtatePan( t++);
+		this.LevelPanel.UpdtatePan( t++);
+		this.NbLignePanel.UpdtatePan( t++);
+		this.PcsSuivante.UpdatePan(this.gt.PieceSuivante);
 	}
 
 
@@ -220,15 +162,16 @@ class JPanelperso extends JPanel{
       {
 			
 		  	Bloc[][] grille = this.gt.getgrille();
-			
-			for(int i=0;i<10;i++) 
+			Color gray = new Color(80,80,80);
+			for(int i=0;i<10;i++)
 			{
 				for (int j=4; j<24;j++) 
 				{
 						
 					g.setColor(grille[i][j].getCouleur());
 					g.fillRect(i*30, (j-4)*30, 30 ,30);
-
+					g.setColor(gray);
+					g.drawRect(i*30, (j-4)*30, 30 ,30);
 				}
 			
 			}

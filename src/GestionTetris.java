@@ -207,6 +207,13 @@ public class GestionTetris   {
 		this.PieceSuivante = new Piece();
 		
 	}
+
+
+
+	public Piece getPcsSuiv() {
+		
+		return this.PieceSuivante;
+	}
 	
 	
 	
