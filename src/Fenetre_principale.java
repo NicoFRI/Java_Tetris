@@ -1,5 +1,3 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.*;
@@ -19,7 +17,7 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 
 	public Fenetre_principale(GestionTetris gt) {
 		
-		Font font = new Font("Arial",Font.BOLD,12);
+		//Font font = new Font("Arial",Font.BOLD,12);
 		this.gt=gt;
 		this.addKeyListener(this);
 		
@@ -184,6 +182,7 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 		if(OhKAY.getKeyCode()==39) { gt.decalePieceDroit();}//Droit
 		if(OhKAY.getKeyCode()==40) { gt.descendrePiece(); }//Bas
 		if(OhKAY.getKeyCode()==38) { gt.tournerPiece(); }//Haut
+		this.cell1.repaint();
 	}
 
 
@@ -214,7 +213,7 @@ class JPanelperso extends JPanel{
 	
 	public JPanelperso(GestionTetris gt){
 		this.gt = gt;
-		Piece ActivePiece = this.gt.getActivePiece();
+		
 	}
 	
 	  public void paint(Graphics g)

@@ -1,10 +1,11 @@
+import java.awt.Color;
 
 public class Piece {
 	private int type; // N° entre 1 et 7
 	private int[][] piece = new int[4][4];  // matrice de la piece
 	private int posX; // position en X
 	private int posY; // position en Y
-	
+	private Color couleur;
 	//constructeur
 	public Piece(){
 		this.initialise();
@@ -15,7 +16,7 @@ public class Piece {
 	private void initialise(){
 		
 		this.type = (int) (Math.random()*6)+1;
-		this.posX = 0;
+		this.posX = 3;
 		this.posY = 0;
 				
 		 switch (this.type)
@@ -29,7 +30,8 @@ public class Piece {
 		  				{0,0,0,0}
 		  				};
 		  		
-		 	this.setPiece(T);		
+		 	this.setPiece(T);
+		 	this.setCouleur(new Color(160,0,240));
 		 	break;
 		  	}
 		  	case 2:
@@ -41,7 +43,8 @@ public class Piece {
 		  				{0,0,0,0}
 		  				};
 		  		
-		  	this.setPiece(T);	 			
+		  	this.setPiece(T);
+		  	this.setCouleur(new Color(240,0,0));
 		 	break;
 		  	}
 		  	case 3:
@@ -53,7 +56,8 @@ public class Piece {
 		  				{0,1,1,0}
 		  				};
 		  		
-		  	this.setPiece(T);	
+		  	this.setPiece(T);
+		  	this.setCouleur(new Color(0,240,0));
 		 	break;
 		  	}
 		  	case 4:
@@ -65,7 +69,8 @@ public class Piece {
 		  				{0,1,1,0}
 		  				};
 		  		
-			this.setPiece(T);	
+			this.setPiece(T);
+			this.setCouleur(new Color(216,144,0));
 			break;
 		  	}
 		  	case 5:
@@ -77,7 +82,8 @@ public class Piece {
 		  				{0,0,1,0}
 		  				};
 		  		
-			this.setPiece(T);	
+			this.setPiece(T);
+			this.setCouleur(new Color(0,240,240));
 			break;
 			}
 		  	case 6:
@@ -89,9 +95,10 @@ public class Piece {
 		  				{0,0,0,0}
 		  				};
 		  		
-			 this.setPiece(T);	
+			 this.setPiece(T);
+			 this.setCouleur(new Color(0,0,240));
 			 break;
-		  	}
+			}
 		  	case 7:
 		  	{
 		  		int[][] T = {
@@ -102,6 +109,7 @@ public class Piece {
 		  				};
 		  		
 			  this.setPiece(T);	
+			  
 			 break;
 		  	}
 		 }
@@ -178,5 +186,13 @@ public class Piece {
 			}
 		System.out.println();
 		}
+	}
+
+	public Color getCouleur() {
+		return couleur;
+	}
+
+	public void setCouleur(Color couleur) {
+		this.couleur = couleur;
 	}
 }

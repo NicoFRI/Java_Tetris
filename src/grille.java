@@ -1,24 +1,32 @@
 import java.awt.Color;
 
 public class grille {
-	public Bloc[][] grille;
+	private Bloc[][] grille;
 	
 	public grille(){
 				 
-		    grille = new Bloc [10][24];
+		    this.grille = new Bloc [10][24];
 
 		    for (int i=0;i<10;i++) {
 		    	for (int j=0;j<24;j++) {
-		    	System.out.println(i*j);	
-		   		grille [i][j]=new Bloc(i,j-4,new Color((1+i)*(j+1),(1+i)*(j+1),(1+i)*(j+1)));
+		    	this.grille[i][j] = new Bloc(i,j-4,new Color(80,80,80));
 		    	}
 		    }
 
 	}
 	
-	
-	public Bloc[][] getgrille() {
-		return grille;
+
+	void setBloc(int i, int j, Bloc Bl)
+	{
+		 this.grille[i][j] = Bl;
 	}
 	
+	
+	public Bloc[][] getgrille() {
+		return this.grille;
+	}
+	
+	public void setGrille(Bloc[][] gr) {
+		this.grille = gr;
+	}
 }
