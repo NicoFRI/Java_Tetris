@@ -11,7 +11,7 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 	/**
 	 * 
 	 */
-	protected JLabel Score, Level, Nb_Ligne, FormeSuivante;
+	protected JLabel Score, Level, Nb_Ligne, FormeSuivante ,  titre_score, titre_level, titre_nb_ligne, titre_forme_suiv;
 	GestionTetris gt;
 	private JPanelperso cell1;
 	
@@ -19,6 +19,7 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 
 	public Fenetre_principale(GestionTetris gt) {
 		
+		Font font = new Font("Arial",Font.BOLD,12);
 		this.gt=gt;
 		this.addKeyListener(this);
 		
@@ -32,41 +33,84 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 		
 		//Grille
 	    this.cell1 = new JPanelperso(gt);
-	    this.cell1.setBackground(Color.YELLOW);
+	    this.cell1.setLayout(null);
+	    this.cell1.setBackground(new Color(255,255,255));
 	    this.cell1.setPreferredSize(new Dimension(300, 600));
 	    
-	       
+	     
 	    //panel Score
 	    JPanel cell2 = new JPanel();
-	    cell2.setBackground(Color.RED);
+	    cell2.setLayout(null);
+	    cell2.setBackground(new Color(20,20,20));
 	    cell2.setPreferredSize(new Dimension(300, 100));
-	    cell2.add(new JLabel("Votre score"));
-		Score = new JLabel("00000000");
-		cell2.add(Score);
 	    
+	    titre_score = new JLabel("Votre score");
+	    titre_score.setForeground(new Color(255,255,255));
+	    titre_score.setFont(new Font("Courrier New",Font.BOLD,25));
+	    cell2.add( titre_score);
+	    titre_score.setBounds(80, 15, 300, 30);
+	    
+		Score = new JLabel("00000000");
+		Score.setForeground(new Color(255,255,255));
+		Score.setFont(new Font("Courrier New",Font.BOLD,20));
+		cell2.add(Score);
+		Score.setBounds(105, 45, 300, 30);
+		
+		
+		
 		//panel Level
 	    JPanel cell3 = new JPanel();
-	    cell3.setBackground(Color.BLUE);
+	    cell3.setLayout(null);
+	    cell3.setBackground(new Color(20,20,20));
 	    cell3.setPreferredSize(new Dimension(300, 100));
-	    cell3.add(new JLabel("Level"));
-		Level = new JLabel("00000000");
-		cell3.add(Level);
 	    
+	    titre_level = new JLabel("Votre Level");
+	    titre_level.setForeground(new Color(255,255,255));
+	    titre_level.setFont(new Font("Courrier New",Font.BOLD,25));
+	    cell3.add( titre_level);
+	    titre_level.setBounds(80, 15, 300, 30);
+	    
+	    Level = new JLabel("00000000");
+	    Level.setForeground(new Color(255,255,255));
+	    Level.setFont(new Font("Courrier New",Font.BOLD,20));
+		cell3.add(Level);
+		Level.setBounds(105, 45, 300, 30);
+	    
+	    
+		
 		//panel nb ligne
 	    JPanel cell4 = new JPanel();
-	    cell4.setBackground(Color.RED);
+	    cell4.setLayout(null);
+	    cell4.setBackground(new Color(20,20,20));
 	    cell4.setPreferredSize(new Dimension(300, 100));
-	    cell4.add(new JLabel("Nb ligne"));
-		Nb_Ligne = new JLabel("00000000");
-		cell4.add(Nb_Ligne);
 	    
+	    titre_nb_ligne = new JLabel("Nb ligne");
+	    titre_nb_ligne.setForeground(new Color(255,255,255));
+	    titre_nb_ligne.setFont(new Font("Courrier New",Font.BOLD,25));
+	    cell4.add( titre_nb_ligne);
+	    titre_nb_ligne.setBounds(100, 15, 300, 30);
+	    
+	    
+	    Nb_Ligne = new JLabel("00000000");
+	    Nb_Ligne.setForeground(new Color(255,255,255));
+	    Nb_Ligne.setFont(new Font("Courrier New",Font.BOLD,20));
+		cell4.add(Nb_Ligne);
+		Nb_Ligne.setBounds(105, 45, 300, 30);
+		
+	    
+		
 		//panel piece suivante.
-	    JPanel cell5 = new JPanel();
-	    cell5.setBackground(Color.BLUE);
-	    cell5.setPreferredSize(new Dimension(300, 100));
-	    cell5.add(new JLabel("Suivant"));
-		FormeSuivante = new JLabel("Suivant");
-		cell5.add(FormeSuivante);
+		JPanel cell5 = new JPanel();
+		cell5.setLayout(null);
+		cell5.setBackground(new Color(20,20,20));
+		cell5.setPreferredSize(new Dimension(300, 100));
+	  
+		 titre_forme_suiv = new JLabel("Forme suivante");
+		 titre_forme_suiv.setForeground(new Color(255,255,255));
+		 titre_forme_suiv.setFont(new Font("Courrier New",Font.BOLD,25));
+		 cell5.add( titre_forme_suiv);
+		 titre_forme_suiv.setBounds(60, 15, 300, 30);
+		
 	    
 	    JPanel Tetris = new JPanel();
 		Tetris.setPreferredSize(new Dimension(600,600));
