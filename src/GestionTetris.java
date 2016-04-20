@@ -113,7 +113,7 @@ public class GestionTetris   {
 			this.ActivePiece.rotateLeft();
 			GrillePiece = this.ActivePiece.getPiece();
 			this.ActivePiece.rotateRight();
-			System.out.println("Rot : " + Rot);
+
 		}
 		
 	//place la piece dans la grille dynamique.
@@ -188,11 +188,10 @@ public class GestionTetris   {
 	    		for (int j=0;j<24;j++) {
 		    		if (this.GrilleDynamique[i][j].getCouleur().getRGB() == BlocLigneComplet.getRGB()){
 		    			cpt=cpt+1;
-		    			System.out.println(cpt +" " +j);
-		    			
+		    					    			
 		    			for (int u=0;(j-u)>4;u++) {
-		    				/*this.GrilleDynamique[i][j-u] = this.GrilleDynamique[i][j-u-1];*/
-		    				System.out.println("up" + (j-u));
+		    				this.GrilleDynamique[i][j-u] = this.GrilleDynamique[i][j-u-1];
+		    				
 		    			}
 		    				this.GrilleDynamique[i][0] = new Bloc(i, -4 , CaseVide);
 		    			

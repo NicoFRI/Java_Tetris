@@ -227,15 +227,14 @@ class JPanelperso extends JPanel{
 				{
 						
 					g.setColor(grille[i][j].getCouleur());
-					g.fillRect(grille[i][j].getX()*30, grille[i][j].getY()*30, 30 ,30);
+					g.fillRect(i*30, (j-4)*30, 30 ,30);
 
 				}
-				
+			
 			}
-      
-
+   
       }
-	
+
 }
 
 
