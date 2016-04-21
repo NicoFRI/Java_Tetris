@@ -18,7 +18,7 @@ public class Piece {
 	// affecte la colleur correndpondant au N° généré
 	private void initialise(){
 		
-		this.type = (int) (Math.random()*6)+1;
+		this.type = (int) (Math.random()*7)+1;
 		this.posX = 3;
 		this.posY = 0;
 				
@@ -112,7 +112,7 @@ public class Piece {
 		  				};
 		  		
 			  this.setPiece(T);	
-			  
+			  this.setCouleur(new Color(109,170,240));
 			 break;
 		  	}
 		 }
