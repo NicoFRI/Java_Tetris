@@ -2,17 +2,20 @@ import java.awt.Color;
 
 public class Piece {
 	private int type; // N° entre 1 et 7
-	private int[][] piece = new int[4][4];  // matrice de la piece
+	private int[][] piece = new int[4][4];  // matrice de la piece : 4 x 4
 	private int posX; // position en X
 	private int posY; // position en Y
-	private Color couleur;
+	private Color couleur; //couleur de la piece
+	
 	//constructeur
 	public Piece(){
 		this.initialise();
 	}
 
 	// intialise : génere un numero aléatoire en 1 et 7
-	// affecte la matrice correndpodant au n° généré
+	// affecte la matrice correndpondant au n° généré
+	// la matrice contient la "forme" de la piece
+	// affecte la colleur correndpondant au N° généré
 	private void initialise(){
 		
 		this.type = (int) (Math.random()*6)+1;
@@ -134,6 +137,7 @@ public class Piece {
 	}
 
 	//tourne la piece de 90° sur la droite
+	//n'est plus utilisé
 	public void rotateRight(){
 		int[][] mat = new int[4][4];
 		for (int i = 0; i<4 ;i++)
@@ -144,26 +148,32 @@ public class Piece {
 		this.setPiece(mat);
 	}
 	
+	//renvois la position en X
 	public int getPosX() {
 		return posX;
 	}
-
+	
+	//défini la position en Y
 	public void setPosX(int posX) {
 		this.posX = posX;
 	}
 
+	//renvois la position en Y
 	public int getPosY() {
 		return posY;
 	}
-
+	
+	//Défini la position en Y
 	public void setPosY(int posY) {
 		this.posY = posY;
 	}
 
+	//modifie la position en Y
 	public void modPosY(int ModY) {
 		this.posY = this.posY + ModY ;
 	}
 	
+	//modofie la position en X
 	public void modPosX(int ModX) {
 		this.posX = this.posX + ModX ;
 	}
@@ -175,6 +185,7 @@ public class Piece {
 
 	
 	// affiche la patrice de la piece dans la console.
+	// débugage n'est pas utile dans le programe.
 	public void LogPieceDansConsole(){
 		System.out.println("type :" + this.type);
 		for (int i = 0; i<4 ;i++)
@@ -188,10 +199,12 @@ public class Piece {
 		}
 	}
 
+	//renois la couleur
 	public Color getCouleur() {
 		return couleur;
 	}
 
+	//defini la couleur
 	public void setCouleur(Color couleur) {
 		this.couleur = couleur;
 	}

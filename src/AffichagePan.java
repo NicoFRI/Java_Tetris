@@ -8,18 +8,19 @@ import javax.swing.JPanel;
 
 public class AffichagePan extends JPanel{
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -2047258612876503544L;
-	protected JLabel ScoreLabel, titre_score;
-	private String score;
+	protected JLabel ScoreLabel, titre_score; //declaration des Jpanel
+	private String score; // Défini la chaine de score affiché
 	
+	//constructeur
 	public AffichagePan(String Titre) {
-    this.setLayout(null);
+		//FIx les propriété Graphique
+	this.setLayout(null); 
     this.setBackground(new Color(20,20,20));
     this.setPreferredSize(new Dimension(300, 100));
     
+    //label titre du Panneau
     titre_score = new JLabel(Titre);
     titre_score.setForeground(new Color(255,255,255));
     titre_score.setFont(new Font("Courrier New",Font.BOLD,25));
@@ -27,7 +28,7 @@ public class AffichagePan extends JPanel{
     this.add( titre_score);
     titre_score.setBounds(0, 15, 300, 30);
     
-    
+    //label contenant les information dynamaique
     ScoreLabel = new JLabel("00000000");
     ScoreLabel.setForeground(new Color(255,255,255));
     ScoreLabel.setFont(new Font("Courrier New",Font.BOLD,20));
@@ -37,9 +38,15 @@ public class AffichagePan extends JPanel{
 	
 	}
 	
+	//MAJ du label
 	public void UpdtatePan(int S){
+	
+	//forge un chaine de charactere avec le score
 	this.score = ("0000000" + S);	
+	//tronque la chaine
 	this.score = this.score.substring(this.score.length()-6, this.score.length());
+	
+	//redéfini la chaine
 	ScoreLabel.setText(this.score);
 	}
 

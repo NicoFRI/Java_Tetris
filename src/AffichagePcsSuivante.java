@@ -8,10 +8,9 @@ import javax.swing.JPanel;
 
 public class AffichagePcsSuivante extends JPanel {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -3266476620462014388L;
+	//declarations variable
 	protected JLabel titre_forme_suiv;
 	private Piece Pcs;
 	private ZonePCS AffichePiece;
@@ -47,18 +46,33 @@ public class AffichagePcsSuivante extends JPanel {
 		this.Pcs = Piec; 
 		this.AffichePiece.setPiece(Piec);
 	}
+
+	public void gameOver() {
+		this.AffichePiece.gameOver();
+		
+	}
 	
 }
 
-
+//objet Jpanal avec un paint pour l'affichage de la piece.
 class ZonePCS extends JPanel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6320331897816287507L;
 	private Piece Pcs;
+	private boolean GameOver=false;
 	
 	public ZonePCS(Piece Piec){
 	this.setPiece(Piec);		
 	}
 	 
+	public void gameOver() {
+		this.GameOver=true;
+		
+	}
+
 	public void setPiece(Piece Piec){
 		this.Pcs = Piec; 
 	}
@@ -88,5 +102,10 @@ class ZonePCS extends JPanel{
 			
 			}
 
+			if(this.GameOver){
+				g.setColor(new Color(240,0,0));
+				g.fillRect(0,0, 30*6 ,30*6);
+			}
+			
       }
 }

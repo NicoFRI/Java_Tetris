@@ -9,7 +9,7 @@ public class GestionTetris   {
 	Boolean stop;
 	int Score, Level, NbLigne;
 	double nextDescente;
-	
+	boolean PERDU = false;
 	
 	
 	
@@ -25,6 +25,11 @@ public class GestionTetris   {
 	}
 	
 
+	
+	public boolean isNotOver()
+	{
+		return !this.PERDU;
+	}
 	
 	public int getScore()
 	{
@@ -153,10 +158,13 @@ public class GestionTetris   {
 	    				
 	    			}else{ // si il esy dans la grille
 	    			
-	    				//si il rencontre un bloc vide.
+	    				//si il rencontre un bloc plein.
 	    			if (this.gr.getgrille()[i+Xpiece][j+Ypiece].getCouleur().getRGB() != CaseVide.getRGB()){
 	    				
 	    				OkNok = false;
+	    				if(Ypiece <= 4){
+	    					this.PERDU = true;
+	    				}
 	    			}
   						    			
 	    			}

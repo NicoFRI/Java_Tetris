@@ -47,12 +47,12 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 		PcsSuivante = new AffichagePcsSuivante(gt.getPcsSuiv());
 	    
 	    JPanel Tetris = new JPanel();
-	    Dimension dim = new Dimension(600,600);
-		Tetris.setPreferredSize(dim);
-	    Tetris.setMinimumSize(dim);
-	    Tetris.setMaximumSize(dim);
+	    Dimension dim = new Dimension(650,605);
+		Tetris.setPreferredSize(new Dimension(600,600));
+		Tetris.setMinimumSize(dim);
+		Tetris.setMaximumSize(dim);
 		Tetris.setBackground(Color.WHITE);
-		
+		this.setResizable(false);
 		//On définit le layout manager
 	    Tetris.setLayout(new GridBagLayout());
 	    
@@ -110,7 +110,9 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 		this.LevelPanel.UpdtatePan( this.gt.getLevel());
 		this.NbLignePanel.UpdtatePan( this.gt.getNbLigne());
 		this.PcsSuivante.UpdatePan(this.gt.PieceSuivante);
-		
+		if (!this.gt.isNotOver()){
+			this.PcsSuivante.gameOver();
+		}
 	}
 
 
@@ -126,6 +128,7 @@ public class Fenetre_principale extends JFrame implements KeyListener{
 	}
 
 
+	
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
