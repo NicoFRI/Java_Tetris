@@ -194,12 +194,29 @@ public class GestionTetris   {
     	    		}			
 	    		}
 	    	}
+	    	
+	    	int cpt_score = cpt;
+	    	//calcul score
+	    	while(cpt_score>0){
+	    	this.Score=this.Score + cpt_score;
+	    	cpt_score=cpt_score-10;	
+	    	}
+	    	
+	    	
+	    	if(this.Score>=100) {
+	    		this.Level = this.Score/100+1;
+	    	}
+	    	
+	    	this.NbLigne= this.NbLigne + cpt / 10;
+
+	    	 	    	
+	    	
 	    }
 	    
 
-   
+	    cpt=10;
 	    if (ligneComplete){
-	    	cpt=0;
+	    	
 		    
 	    	for (int i=0;i<10;i++) {
 		    	
